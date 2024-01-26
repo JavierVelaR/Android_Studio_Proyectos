@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CalculadoraIMC</string>
+    <string name="titulo">Calculadora IMC</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="altura">Altura</string>
+    <string name="example">120cm</string>
+    <string name="peso">Peso</string>
+    <string name="edad">Edad</string>
+    <string name="boton_menos">Boton menos</string>
+    <string name="boton_mas">Boton mas</string>
+    <string name="calcular">CALCULAR</string>
+    <string name="resultado">Tu resultado</string>
+    <string name="re_calcular">Re-calcular</string>
+</resources>
