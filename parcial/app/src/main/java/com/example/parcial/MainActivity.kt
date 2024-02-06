@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             //ToastMAkeTExt para hacer visible que se ha registrado la cita
             Toast.makeText(this, "Cita pedida con éxito", Toast.LENGTH_LONG).show()
 
+            Log.d("Cita", "Cita pedid con éxito")
             //Crear un Intent para pasar a la segunda actividad
             val intent = Intent(this, ResultActivity::class.java)
 
