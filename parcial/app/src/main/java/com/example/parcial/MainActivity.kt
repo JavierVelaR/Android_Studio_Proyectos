@@ -4,125 +4,61 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.cardview.widget.CardView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.slider.RangeSlider
-import kotlin.math.roundToInt
+import kotlin.properties.Delegates
+
 
 class MainActivity : AppCompatActivity() {
-    lateinit var txtAltura: TextView
-    lateinit var txtPeso: TextView
-    lateinit var txtEdad: TextView
-    lateinit var genero:String
+    private var urgente by Delegates.notNull<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        txtAltura = findViewById<TextView>(R.id.textoAltura)
-        txtPeso = findViewById<TextView>(R.id.textoPeso)
-        txtEdad = findViewById<TextView>(R.id.textoEdad)
-
-        //CardViews genero
-        val hombre = findViewById<CardView>(R.id.hombre)
-        handleCardViewClick(hombre)
-        val mujer = findViewById<CardView>(R.id.mujer)
-        handleCardViewClick(mujer)
-
-        //RangeSlider altura
-        val rsAltura = findViewById<RangeSlider>(R.id.rsAltura)
-        rsAltura.addOnChangeListener{ slider, value, fromUser ->
-            txtAltura.text = "${value.toInt()}"
-        }
-
-        //Botones peso
-        val btnMenosPeso = findViewById<FloatingActionButton>(R.id.btnMenosPeso)
-        btnMenosPeso.setOnClickListener{
-            disminuirPeso()
-        }
-
-        val btnMasPeso = findViewById<FloatingActionButton>(R.id.btnMasPeso)
-        btnMasPeso.setOnClickListener{
-            aumentarPeso()
-        }
-
-        //Botones edad
-        val btnMenosEdad = findViewById<FloatingActionButton>(R.id.btnMenosEdad)
-        btnMenosEdad.setOnClickListener{
-            disminuirEdad()
-        }
-
-        val btnMasEdad = findViewById<FloatingActionButton>(R.id.btnMasEdad)
-        btnMasEdad.setOnClickListener{
-            aumentarEdad()
-        }
+        val cvUrgente = findViewById<CardView>(R.id.urgente)
+        handleCardViewClick(cvUrgente)
 
         val btnPedirCita = findViewById<AppCompatButton>(R.id.pedirCita)
         btnPedirCita.setOnClickListener {
-            //val alt: Double = rsAltura.values[0].toInt().toDouble()/100
-            //val peso = txtPeso.text.toString().toInt()
-            val nombre: String = findViewById<AppCompatButton>(R.id.campoNombre).text.toString()
-            val apellido: String = findViewById<AppCompatButton>(R.id.campoApellido).text.toString()
-            //val fecha: String =
-
-            //Calculos matematicos...
-
-            //Crear un Intent para pasar a la segunda actividad
-            val intent = Intent(this, ResultActivity::class.java)
+            val nombre: String = findViewById<AppCompatEditText>(R.id.campoNombre).text.toString()
+            val apellido: String = findViewById<AppCompatEditText>(R.id.campoApellido).text.toString()
+            val fecha: String = findViewById<AppCompatEditText>(R.id.campoFecha).text.toString()
 
             //Agregar datos extra al Intent
             intent.putExtra("nombre", nombre)
             intent.putExtra("apellido", apellido)
-            //intent.putExtra("fecha", fecha)
+            intent.putExtra("fecha", fecha)
+
+            if(urgente) {
+                println("Se ha notificado una urgencia")
+                Log.d("URGENTE", "Se ha notificado una urgencia")
+                intent.putExtra("urgente", true)
+                Toast.makeText(this, "Cita urgente seleccionada", Toast.LENGTH_LONG).show()
+
+            }
+
+            //ToastMAkeTExt para hacer visible que se ha registrado la cita
+            Toast.makeText(this, "Cita pedida con éxito", Toast.LENGTH_LONG).show()
+
+            //Crear un Intent para pasar a la segunda actividad
+            val intent = Intent(this, ResultActivity::class.java)
 
             //Iniciar segunda actividad
             startActivity(intent)
+
         }
     }
 
-    private fun handleCardViewClick(cv: CardView){
-        when(cv.id){
-            R.id.hombre ->{
-                println("Se ha seleccionado: Hombre")
-                Log.d("Hombre", "handleCardViewClick: seleccionado Hombre")
-                genero = "Hombre"
-            }
-            R.id.mujer->{
-                println("Se ha seleccionado: Hombre")
-                Log.d("Mujer", "handleCardViewClick: seleccionado Mujer")
-                genero = "Mujer"
+    private fun handleCardViewClick(cv: CardView) {
+        when (cv.id) {
+            R.id.urgente -> {
+                //Especificar que la cita es urgente
+                urgente = true
             }
         }
     }
 
-
-    private fun aumentarPeso(){
-        val valorActual = txtPeso.text.toString().toInt()
-        val nuevoValor = valorActual + 1
-
-        txtPeso.text = "$nuevoValor"
-    }
-
-    private fun disminuirPeso(){
-        val valorActual = txtPeso.text.toString().toInt()
-        val nuevoValor = valorActual - 1
-
-        txtPeso.text = "$nuevoValor"
-    }
-
-    private fun aumentarEdad(){
-        val valorActual = txtEdad.text.toString().toInt()
-        val nuevoValor = valorActual + 1
-
-        txtEdad.text = nuevoValor.toString()
-    }
-
-    private fun disminuirEdad(){
-        val valorActual = txtEdad.text.toString().toInt()
-        val nuevoValor = valorActual - 1
-
-        txtEdad.text = nuevoValor.toString()
-    }
 }

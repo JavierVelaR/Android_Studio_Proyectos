@@ -19,6 +19,7 @@ class ResultActivity : AppCompatActivity() {
         val nombre = intent.getStringExtra("nombre")
         val apellido = intent.getStringExtra("apellido")
         val fecha = intent.getStringExtra("fecha")
+        val urgencia = intent.getBooleanExtra("urgente", false)
 
         val tvNombre = findViewById<TextView>(R.id.nombre)
         tvNombre.text = nombre
@@ -29,5 +30,11 @@ class ResultActivity : AppCompatActivity() {
         val tvFecha = findViewById<TextView>(R.id.fecha)
         tvFecha.text = fecha
 
+        val tvUrgencia = findViewById<TextView>(R.id.urgencia)
+        if(urgencia){
+            tvUrgencia.text = "Cita urgente"
+        }else{
+            tvUrgencia.text = ""
+        }
     }
 }

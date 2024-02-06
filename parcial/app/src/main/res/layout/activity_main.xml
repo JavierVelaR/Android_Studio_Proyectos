@@ -4,33 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#730C8A"
     tools:context=".MainActivity">
 
     <TextView
     android:id="@+id/titulo"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:text="titulo"
-    android:textSize="40sp"
+    android:layout_height="100dp"
+    android:gravity="center"
+    android:text="Realizar Consulta"
+    android:textSize="45sp"
     android:textStyle="bold"
     android:textColor="@color/black"
+    android:background="@color/rosa"
     android:textAlignment="center"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.cardview.widget.CardView
-    android:id="@+id/hombre"
+    android:id="@+id/nombre"
     android:layout_width="180dp"
     android:layout_height="180dp"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="40dp"
     app:cardCornerRadius="30dp"
     app:cardBackgroundColor="@color/black"
-    android:clickable="true"
     app:layout_constraintTop_toBottomOf="@id/titulo"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toStartOf="@id/mujer"
-    android:focusable="true">
+    app:layout_constraintEnd_toStartOf="@id/apellido">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,6 +42,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:text="Nombre"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -50,6 +52,7 @@
             android:id="@+id/campoNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:hint="Escribe tu nombre..."
             android:textColorHint="@color/gris"
             />
@@ -58,20 +61,17 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-    android:id="@+id/mujer"
+    android:id="@+id/apellido"
     android:layout_width="180dp"
     android:layout_height="180dp"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="40dp"
     app:cardCornerRadius="30dp"
     app:cardBackgroundColor="@color/black"
-    android:clickable="true"
     app:layout_constraintTop_toBottomOf="@id/titulo"
-    app:layout_constraintStart_toEndOf="@id/hombre"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:focusable="true">
+    app:layout_constraintStart_toEndOf="@id/nombre"
+    app:layout_constraintEnd_toEndOf="parent">
 
     <LinearLayout
-        android:id="@+id/apellido"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -80,6 +80,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:text="Apellido"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -89,6 +90,7 @@
             android:id="@+id/campoApellido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:hint="Escribe tu apellido..."
             android:textColorHint="@color/gris"/>
 
@@ -96,180 +98,77 @@
 
     </androidx.cardview.widget.CardView>
 
+
+
     <androidx.cardview.widget.CardView
-    android:id="@+id/altura"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginHorizontal="20dp"
-    app:cardCornerRadius="20dp"
-    app:cardBackgroundColor="@color/black"
-    app:layout_constraintTop_toBottomOf="@id/hombre">
+        android:id="@+id/fecha"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardBackgroundColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/nombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/urgente">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="altura"
-            android:textSize="25sp"
-            android:textColor="@color/white"
-            android:textAlignment="center"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/textoAltura"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="example"
-            android:textSize="35sp"
-            android:textColor="@color/white"
-            android:textAlignment="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Fecha"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
 
-        <com.google.android.material.slider.RangeSlider
-            android:id="@+id/rsAltura"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:stepSize="1"
-            android:valueFrom="120"
-            android:valueTo="200"/>
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/campoFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:hint="dd/mm/aaaa"
+                android:textColorHint="@color/gris"/>
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-    android:id="@+id/peso"
-    android:layout_width="170dp"
-    android:layout_height="150dp"
-    android:layout_marginTop="20dp"
-    app:cardCornerRadius="30dp"
-    app:cardBackgroundColor="@color/black"
-    android:clickable="true"
-    app:layout_constraintTop_toBottomOf="@id/altura"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toStartOf="@id/edad"
-    android:focusable="true">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="peso"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:id="@+id/textoPeso"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="70"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textAlignment="center"/>
+        android:id="@+id/urgente"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardBackgroundColor="@color/rojo"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@id/apellido"
+        app:layout_constraintStart_toEndOf="@id/fecha"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnMenosPeso"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/disminuir"
-                android:tint="@color/teal_200"
-                android:backgroundTint="@color/rosa"
-                android:contentDescription="boton_menos"/>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnMasPeso"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/aumentar"
-                android:tint="@color/teal_200"
-                android:backgroundTint="@color/rosa"
-                android:contentDescription="boton_mas"/>
+                android:layout_marginHorizontal="20dp"
+                android:text="PEDIR CITA URGENTE"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@color/black"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
-
-    </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-    android:id="@+id/edad"
-    android:layout_width="170dp"
-    android:layout_height="150dp"
-    android:layout_marginTop="20dp"
-    app:cardCornerRadius="30dp"
-    app:cardBackgroundColor="@color/black"
-    android:clickable="true"
-    app:layout_constraintTop_toBottomOf="@id/altura"
-    app:layout_constraintStart_toEndOf="@id/peso"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:focusable="true">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="edad"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:id="@+id/textoEdad"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="30"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textAlignment="center"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnMenosEdad"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/disminuir"
-                android:tint="@color/teal_200"
-                android:backgroundTint="@color/rosa"
-                android:contentDescription="boton_menos"/>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnMasEdad"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/aumentar"
-                android:tint="@color/teal_200"
-                android:backgroundTint="@color/rosa"
-                android:contentDescription="boton_mas"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -277,8 +176,8 @@
     <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/pedirCita"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_marginBottom="20dp"
+    android:layout_height="90dp"
+    android:layout_marginBottom="50dp"
     android:text="Pedir cita"
     android:textSize="25sp"
     android:backgroundTint="@color/rosa"
