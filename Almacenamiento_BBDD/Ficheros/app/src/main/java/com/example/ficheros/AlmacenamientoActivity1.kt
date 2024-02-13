@@ -22,8 +22,8 @@ class AlmacenamientoActivity1 : AppCompatActivity() {
 
     private fun crearArchivo() {
         try {
-            val fileName = "Alberto el grande"
-            val fileContent = "Alberto imperator"
+            val fileName = "Segundo fichero"
+            val fileContent = "TE AMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
 
             // Abrir un OutputStreamWriter en el modo privado (solo accesible por esta aplicación)
             var osw: OutputStreamWriter = OutputStreamWriter(openFileOutput(fileName, Context.MODE_PRIVATE))
