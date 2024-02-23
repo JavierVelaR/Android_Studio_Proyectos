@@ -23,9 +23,9 @@ class GestorBD (context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLi
     }
 
     override fun onCreate(db:SQLiteDatabase){
-        //val delete = ("Delete table $TABLE_NAME")
+        //val delete = ("drop table $TABLE_NAME")
         val CREATE_TABLE=
-            ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_NAME TEXT, $COLUMN_LASTNAME TEXT" +
+            ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_NAME TEXT, $COLUMN_LASTNAME TEXT," +
                     "$COLUMN_DNI TEXT, $COLUMN_AGE INT, $COLUMN_COURSE INT)")
         Log.d("Crear tabla", CREATE_TABLE)
         db.execSQL(CREATE_TABLE)
