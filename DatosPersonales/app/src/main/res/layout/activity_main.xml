@@ -77,20 +77,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/black"
         android:text="Agregar"
         app:layout_constraintTop_toBottomOf="@+id/etAnio"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnMostrar"/>
 
     <Button
         android:id="@+id/btnMostrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/black"
         android:text="Mostrar todos"
         app:layout_constraintTop_toBottomOf="@+id/etAnio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAgregar"/>
+        app:layout_constraintStart_toEndOf="@id/btnAgregar"/>
+
+    <Button
+        android:id="@+id/btnBorrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/black"
+        android:text="Borrar Todo"
+        app:layout_constraintTop_toBottomOf="@+id/etAnio"
+        app:layout_constraintStart_toEndOf="@id/btnMostrar"/>
 
     <TextView
         android:id="@+id/tvMuestraAlumno"
